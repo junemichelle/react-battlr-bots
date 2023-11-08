@@ -3,3 +3,12 @@
   background-color: rgba(40, 24, 58, 0.555);
 }
 
+.container
+{
+  background-color: azure;
+  display:grid;
+  grid-template-columns: repeat( 3, 1fr);
+  grid-auto-rows: auto;
+  grid-gap: 6px;
+}
+

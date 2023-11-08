@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
 
-const BotCollection = () => {
+import React, { useEffect, useState } from 'react';
+
+const BotCollection = ({ addToArmy }) => {
   const [bots, setBots] = useState([]);
 
   useEffect(() => {
@@ -19,19 +20,28 @@ const BotCollection = () => {
       });
   }, []);
 
+  const HandleAddToArmy = (bot) => {
+    addToArmy(bot);
+  }
+
   return (
     <div>
+      <h2>Bot Collection</h2>
+      <h3>Create your army!</h3>
+      
       {bots.map((bot) => (
-        <div key={bot.id}>
-          <card>
-          <img src={bot.avatar_url} alt="bot avatar" />
-          <h2>Name: {bot.name}</h2>
-          <p>Health: {bot.health}</p>
-          <p>Damage: {bot.damage}</p>
-          <p>Armor: {bot.armor}</p>
-          <p>Bot class: {bot.bot_class}</p>
-          <p>Catchphrase: {bot.catchphrase}</p>
-          </card>
+        <div key={bot.id} className='container'>
+         
+          
+            <img src={bot.avatar_url} alt="bot avatar" />
+            <h3>Name: {bot.name}</h3>
+            <p>Health: {bot.health}</p>
+            <p>Damage: {bot.damage}</p>
+            <p>Armor: {bot.armor}</p>
+            <p>Bot class: {bot.bot_class}</p>
+            <p>Catchphrase: {bot.catchphrase}</p>
+            <button className= 'btn btn-success'onClick={() => HandleAddToArmy(bot)}>Enlist</button>
+        
         </div>
       ))}
     </div>
